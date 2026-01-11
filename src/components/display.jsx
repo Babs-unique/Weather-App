@@ -18,7 +18,7 @@ function Display({icon,temp,countryName,bgClass}){
     return(
         <>
             <div className={`ui-display-one ${bgClass || ''}`} role="region" aria-label={`Current weather for ${countryName}`} tabIndex={0}>
-                    <div>
+                    <div className='country-details'>
                     <h2>{countryName}</h2>
                     <p>{new Date().toLocaleString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</p>
                     {/* <p className='sun-times'>Sunrise: {sunrise ?? '—'} • Sunset: {sunset ?? '—'}</p> */}

@@ -1,5 +1,5 @@
 
-export const WeatherCondition = ({feels,celsiusSign,humidity,wind,windSpeed,precipitation,precipitationSign,uvIndex,visibility,pressure}) => {
+export const WeatherCondition = ({feels,celsiusSign,humidity,wind,windSpeed,precipitation,precipitationSign}) => {
     return (
         
             <div className='ui-display-two'>
@@ -18,18 +18,6 @@ export const WeatherCondition = ({feels,celsiusSign,humidity,wind,windSpeed,prec
                     <div> 
                     <p>Precipitation</p>
                     <h3>{precipitation} {precipitationSign === "mm" ? "mm" : "in"}</h3>
-                    </div>
-                    <div>
-                        <p>UV Index</p>
-                        <h3>{uvIndex ?? '—'}</h3>
-                    </div>
-                    <div>
-                        <p>Visibility</p>
-                        <h3>{visibility ?? '—'} km</h3>
-                    </div>
-                    <div>
-                        <p>Pressure</p>
-                        <h3>{pressure ?? '—'} hPa</h3>
                     </div>
             </div>
     )

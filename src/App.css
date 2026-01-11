@@ -230,13 +230,13 @@ h1{
   grid-column: 2/3;
   background-color:hsl(243, 23%, 24%); 
   border-radius: 10px;
-    padding: 5px 15px;
+  padding: 5px 15px;
 }
 .forecast{
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
+  gap: 15px;
 }
 /* select{
   background-color:hsl(243, 23%, 30%);
@@ -405,10 +405,18 @@ hr{
   margin-top: 12px;
   border-radius: 10px;
 }
-@media (min-width: 320px)  and (max-width:425px){
-  body{
-    width: 100vw;
+@media (min-width: 320px)  and (max-width:767px){
+  #root {
+    padding:0;
+    width: 100%;
+    overflow-x: hidden;
   }
+  body{
+    width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+  }
+  hea
   .ui-display{
     display: flex;
     flex-direction: column;
@@ -417,14 +425,11 @@ hr{
   .ui-display-one{
     display: block;
     width: 100%;
+    padding-top: 10px;
   }
-  header{
-  display:flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 50%;
-  margin: 0 20px;
-}
+  .ui-display-one > div{
+    text-align: center;
+  }
 h1{
   text-align: center;
 }
@@ -433,7 +438,44 @@ h1{
   flex-direction: column;
   width: 100%;
 }
+.search input{
+  width: 95%;
+}
+.logo-wrap img{
+  width: 120px;
+}
 .ui-display{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.ui-display-one{
+  display: block;
+  width: 82%;
+  order: -2;
+}
+.ui-display-four{
+  order: 4;
+}
+.ui-display-two{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  order: -1;
+
+
+}
+.ui-display-two div{
+  width: 80%;
   
+}
+.inner-boxes{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.country-details h2,
+.country-details p{
+  text-align: center;
 }
 }
