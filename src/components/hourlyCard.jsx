@@ -7,6 +7,20 @@ import fogImg from '../assets/icon-fog.webp'
 import stormImg from '../assets/icon-storm.webp'
 import snowImg from '../assets/icon-snow.webp'
 export const HourlyCard = ({day,hourlyData,toggle,selectedDay,down}) => {
+    const formatHour = (t) => {
+        if (!t) return ''
+        try {
+            const d = new Date(t)
+            if (!isNaN(d.getTime())) {
+                return d.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit', hour12: false })
+            }
+        } catch (e) {
+            // ignore and fallback
+            console.error(e)
+        }
+        if (typeof t === 'string' && t.length >= 16) return t.slice(11,16)
+        return String(t)
+    }
     let iconSelection = {
                 "rain" : rainImg,
                 "sun" : sunImg,
@@ -41,7 +55,7 @@ export const HourlyCard = ({day,hourlyData,toggle,selectedDay,down}) => {
                     className='timely-forecast'>
                     <div>
                         <img src={iconSelection[hour.icon]} alt="rainy" />
-                        <p>{hour.time}</p>
+                        <p>{formatHour(hour.time)}</p>
                     </div>
                     <div>
                         <p>{hour.temperature}°</p>

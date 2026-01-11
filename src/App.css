@@ -174,8 +174,9 @@ h1{
 }
 .ui-display-two{
   grid-column: 1/2;
-  grid-row: 2/3;
-  display: flex;
+  grid-row: 2/4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 .ui-display-two div{
@@ -190,7 +191,7 @@ h1{
 }
 .ui-display-three{
   grid-column: 1/2;
-  grid-row: 3/4;
+  grid-row: 4/5;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -225,7 +226,7 @@ h1{
   gap: 20px;
 }
 .ui-display-four{
-  grid-row: 1/4;
+  grid-row: 1/5;
   grid-column: 2/3;
   background-color:hsl(243, 23%, 24%); 
   border-radius: 10px;
@@ -431,5 +432,8 @@ h1{
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+.ui-display{
+  
 }
 }

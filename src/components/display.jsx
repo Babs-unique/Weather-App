@@ -5,7 +5,7 @@ import partlyCloudImg from '../assets/icon-partly-cloudy.webp'
 import fogImg from '../assets/icon-fog.webp'
 import stormImg from '../assets/icon-storm.webp'
 import snowImg from '../assets/icon-snow.webp'
-function Display({icon,temp,countryName,sunrise,sunset,bgClass}){
+function Display({icon,temp,countryName,bgClass}){
     let iconSelection = {
                     "rain" : rainImg,
                     "sun" : sunImg,
@@ -21,7 +21,7 @@ function Display({icon,temp,countryName,sunrise,sunset,bgClass}){
                     <div>
                     <h2>{countryName}</h2>
                     <p>{new Date().toLocaleString(undefined, { weekday: 'long', month: 'short', day: 'numeric' })}</p>
-                    <p className='sun-times'>Sunrise: {sunrise ?? '—'} • Sunset: {sunset ?? '—'}</p>
+                    {/* <p className='sun-times'>Sunrise: {sunrise ?? '—'} • Sunset: {sunset ?? '—'}</p> */}
                     </div>
                     <div>
                     <img src={iconSelection[icon]} alt={icon || 'weather icon'}/>

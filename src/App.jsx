@@ -31,12 +31,12 @@ function App() {
   const [uvIndex, setUvIndex] = useState(null)
   const [visibility, setVisibility] = useState(null)
   const [pressure, setPressure] = useState(null)
-  const [sunrise, setSunrise] = useState(null)
-  const [sunset, setSunset] = useState(null)
+/*   const [sunrise, setSunrise] = useState(null)
+  const [sunset, setSunset] = useState(null) */
   const [bgClass, setBgClass] = useState('')
   const [favorites, setFavorites] = useState([])
-  const [compare, setCompare] = useState([])
-  const [compareData, setCompareData] = useState([])
+/*   const [compare, setCompare] = useState([]) */
+  const [compareData] = useState([])
   const recognitionRef = useRef(null)
 
   const weatherCodeToIcon = (code) => {
@@ -144,9 +144,9 @@ function App() {
           pressure: Math.round((data.hourly?.surface_pressure || [])[idx] ?? 0)
         }
         // set sunrise/sunset if daily contains same-day entries
-        const todayIdx = 0
+        /* const todayIdx = 0
         setSunrise((data.daily?.sunrise || [])[todayIdx] ?? null)
-        setSunset((data.daily?.sunset || [])[todayIdx] ?? null)
+        setSunset((data.daily?.sunset || [])[todayIdx] ?? null) */
       }
 
       setHourly(hourlyArr)
@@ -213,7 +213,7 @@ function App() {
     localStorage.setItem('favorites', JSON.stringify(next))
   }
 
-  const addCompare = (placeName) => {
+  /* const addCompare = (placeName) => {
     if (!placeName) return
     if (compare.includes(placeName)) return
     (async () => {
@@ -223,9 +223,9 @@ function App() {
           setCompare(prev => (prev.length >= 2 ? [prev[1], placeName] : [...prev, placeName]))
           setCompareData(prev => (prev.length >= 2 ? [prev[1], { place: placeName, current }] : [...prev, { place: placeName, current }]))
           return
-        }
+        } */
         // lookup coordinates for placeName
-        const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(placeName)}&count=1`)
+      /*   const geoRes = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(placeName)}&count=1`)
         const geoJson = await geoRes.json()
         if (!geoJson || !geoJson.results || geoJson.results.length === 0) return
         const r = geoJson.results[0]
@@ -236,15 +236,15 @@ function App() {
         console.warn('compare failed', e)
       }
     })()
-  }
+  } */
 
-  const removeCompare = (placeName) => {
+/*   const removeCompare = (placeName) => {
     setCompare(prev => prev.filter(p => p !== placeName))
     setCompareData(prev => prev.filter(d => d.place !== placeName))
   }
-
+ */
   // fetch a lightweight weather summary without mutating main UI state
-  const fetchWeatherSummary = async (lat, lon, placeName) => {
+ /*  const fetchWeatherSummary = async (lat, lon, placeName) => {
     try {
       const params = [
         'hourly=temperature_2m,apparent_temperature,relativehumidity_2m,precipitation,windspeed_10m,weathercode',
@@ -274,7 +274,7 @@ function App() {
       return { place: placeName, current: null }
     }
   }
-
+ */
   // On load, request geolocation
   useEffect(() => {
     if (!navigator.geolocation) return
@@ -422,12 +422,12 @@ function App() {
 
         {match === "no-data" ? <p>Search results not found!</p> :
           <section className='ui-display'>
-            <Display countryName={city} icon={icon} temp={convertTemp(temp)} sunrise={sunrise} sunset={sunset} bgClass={bgClass} />
-            <div className='display-actions'>
+            <Display countryName={city} icon={icon} temp={convertTemp(temp)}/*  sunrise={sunrise} sunset={sunset} */ bgClass={bgClass} />
+            {/* <div className='display-actions'>
               <button onClick={() => toggleFavorite(city)} title="Save to favorites">{favorites.includes(city) ? '★ Saved' : '☆ Save'}</button>
               <button onClick={() => addCompare(city)} title="Add to compare">Compare</button>
               <button onClick={() => recognitionRef.current?.start()} title="Voice search">🎤</button>
-            </div>
+            </div> */}
             {mappedHourlyData}
             {compareData.length > 0 && (
               <div className='compare-panel'>
@@ -442,7 +442,6 @@ function App() {
                           <p>Feels {convertTemp(c.current.feels_like)}°</p>
                           <p>{c.current.humidity}%</p>
                           <p>{convertWind(c.current.wind_speed)} {selectedUnit.wind}</p>
-                          <button onClick={() => removeCompare(c.place)}>Remove</button>
                         </div>
                       ) : <p>No data</p>}
                     </div>
