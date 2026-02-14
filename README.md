@@ -1,4 +1,4 @@
-<img width="2880" height="1968" alt="localhost_5173_Weather-App" src="https://github.com/user-attachments/assets/95668fce-f17e-410b-9ee4-1acb0c011ee5" /># Weather App
+![alt text](localhost_5173_Weather-App.png)# Weather App
 
 A small, responsive weather web app built with Vite and React. Shows current, hourly, and daily forecasts and includes a service worker for basic offline support.
 
